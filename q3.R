@@ -1,0 +1,11 @@
+NEI <- readRDS("./data/exdata-data-NEI_data/summarySCC_PM25.rds")
+SCC <- readRDS("./data/exdata-data-NEI_data/Source_Classification_Code.rds")
+str(NEI)
+str(SCC)
+pm25baltimorecity <- subset(NEI, NEI$fips =="24510")
+str(pm25baltimorecity)
+library(ggplot2)
+qplot(year,Emissions, data= pm25baltimorecity, facets = .~type,geom =c("point","smooth"))
+library(data.table)
+?aggregate
+ag_pm25bc <- aggregate(pm25baltimorecity[c()])
